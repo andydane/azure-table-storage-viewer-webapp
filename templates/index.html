@@ -2,7 +2,50 @@
 
 <p>Viewing most recent results from storage '{{storageName}}', '{{tableName}}' table</p>
 
-<table class="table table-striped">
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+    <a href="#about">About</a>
+    <a href="#base">Base</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+    <a href="#custom">Custom</a>
+    <a href="#support">Support</a>
+    <a href="#tools">Tools</a>
+  </div>
+</div>
+<div class="table-wrapper">
+  <div class="table-title">
+  </div>
+      <div class="table-filter">
+          <div class="row">
+              <div class="col-sm-3">
+                  <div class="show-entries">
+                      <span>Show</span>
+                      <select class="form-control">
+                          <option>5</option>
+                          <option>10</option>
+                      </select>
+                      <span>entries</span>
+                  </div>
+              </div>
+              <div class="col-sm-9">
+                  <div class="filter-group">
+                      <label>Status</label>
+                      <select class="form-control">
+                          <option>Any</option>
+                          <option>Completed</option>
+                          <option>In Progress</option>
+                          <option>To Run</option>
+                      </select>
+                  </div>
+              <span class="filter-icon"><i class="fa fa-filter"></i></span>
+              </div>
+          </div>
+      </div>
+
+<table class="paginated table table-striped table-hover">
   <tr>
     {{#with rows.[0]}}
       {{#each this}}
