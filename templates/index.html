@@ -1,5 +1,21 @@
 <h1>Table Storage Viewer</h1>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+      $('.search').on('keyup',function(){
+          var searchTerm = $(this).val().toLowerCase();
+          $('#userTbl tbody tr').each(function(){
+              var lineStr = $(this).text().toLowerCase();
+              if(lineStr.indexOf(searchTerm) === -1){
+                  $(this).hide();
+              }else{
+                  $(this).show();
+              }
+          });
+      });
+  });
+  </script>
 <p>Viewing most recent results from storage '{{storageName}}', '{{tableName}}' table</p>
 
 <div class="dropdown">
@@ -45,7 +61,11 @@
           </div>
       </div>
 
-<table class="paginated table table-striped table-hover">
+      <div class="form-group pull-right">
+        <input type="text" class="search form-control" placeholder="What you looking for?">
+    </div>
+
+<table class="table table-striped" id="userTbl">      
   <tr>
     {{#with rows.[0]}}
       {{#each this}}
